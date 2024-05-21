@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #007bff;
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .gradient-background {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            display: flex;
+            justify-content: space-between;
+            opacity: 0.1;
+        }
+
+        .gradient-background div {
+            flex: 1;
+            background: linear-gradient(180deg, #ffffff00, #ffffff);
+        }
+
+        .gradient-background div:nth-child(2) {
+            flex: 2;
+        }
+
+        .gradient-background div:nth-child(3) {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+<!-- ====== Error 404 Section Start ====== -->
+<div class="container text-center">
+    <h2 class="display-1 fw-bold">404</h2>
+    <h4 class="mb-3 fw-semi bold">Oops! That page can’t be found</h4>
+    <p class="mb-4">The page you are looking for might have been deleted.</p>
+    <a th:href="@{home}" class="btn btn-outline-light">Go To Home</a>
+</div>
+
+<!-- Background gradient decorations -->
+<div class="gradient-background">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<!-- ====== Error 404 Section End ====== -->
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

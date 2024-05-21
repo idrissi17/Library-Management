@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      layout:decorate="template.html" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Add Student Form</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+  <style>
+    /* Custom styles for the form */
+    .card {
+      border-radius: 15px;
+    }
+    .card-header {
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 15px 15px 0 0;
+    }
+    .card-body {
+      padding: 2rem;
+    }
+    .form-control {
+      border-radius: 10px;
+    }
+    .btn-outline-primary {
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div layout:fragment="content" class="container-fluid">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-9">
+        <div class="card mb-4">
+          <div class="card-header">Add Student</div>
+          <div class="card-body">
+            <form method="post" action="/admin/addStudent">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="inputFullName" class="form-label">Full Name:</label>
+                      <input type="text" class="form-control" id="inputFullName" placeholder="Enter your full name" name="fullName" required>
+                      <span class="text-danger" th:errors="${addStudent.fullName}"></span>
+                    </div>
+                    <div class="mb-3">
+                      <label for="inputEmailAddress" class="form-label">Email:</label>
+                      <input type="email" class="form-control" id="inputEmailAddress" placeholder="Enter your email address" name="email" required>
+                      <span class="text-danger" th:errors="${addStudent.email}"></span>
+                    </div>
+                    <div class="mb-3">
+                      <label for="inputAddress" class="form-label">Address:</label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="Enter your address" name="address" required>
+                      <span class="text-danger" th:errors="${addStudent.address}"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="inputSchool" class="form-label">School:</label>
+                        <input type="text" class="form-control" id="inputSchool" placeholder="Enter your school" name="school" required>
+                        <span class="text-danger" th:errors="${addStudent.school}"></span>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="inputYearLevel" class="form-label">Year Level:</label>
+                        <input type="text" class="form-control" id="inputYearLevel" placeholder="Enter your year level" name="yearLevel" required>
+                        <span class="text-danger" th:errors="${addStudent.yearLevel}"></span>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="inputPhoneNumber" class="form-label">Phone Number:</label>
+                      <input type="tel" class="form-control" id="inputPhoneNumber" placeholder="Enter your phone number" name="phoneNumber" required>
+                      <span class="text-danger" th:errors="${addStudent.phoneNumber}"></span>
+                    </div>
+                    <div class="mb-3">
+                      <label for="inputAge" class="form-label">Age:</label>
+                      <input type="number" class="form-control" id="inputAge" placeholder="Enter your age" name="age" required>
+                      <span class="text-danger" th:errors="${addStudent.age}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button type="submit" class="btn btn-outline-secondary btn-lg">Add Student</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

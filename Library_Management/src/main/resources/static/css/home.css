@@ -1,0 +1,34 @@
+.card {
+    margin-bottom: 20px;
+}
+.custom-text-size {
+    font-size: 1.5em;
+}
+
+
+
+.card-header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.card-header .btn-primary {
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff; /* Text color white */
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.card-header .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
