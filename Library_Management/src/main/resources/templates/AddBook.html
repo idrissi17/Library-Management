@@ -2,7 +2,8 @@
 <html lang="en"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      layout:decorate="template.html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,66 +11,70 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-xl-9">
-            <div class="card mb-4">
-                <div class="card-header">Add Book</div>
-                <div class="card-body">
-                    <form method="post" action="/addBookPost" enctype="multipart/form-data">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="inputTitle" class="form-label">Title:</label>
-                                        <input type="text" class="form-control" id="inputTitle" placeholder="Enter the book title" name="title" required>
+<div layout:fragment="content" class="container">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-9">
+                <div class="card mb-4">
+                    <div class="card-header">Add Book</div>
+                    <div class="card-body">
+                        <form method="post" action="/addBookPost" enctype="multipart/form-data">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="inputTitle" class="form-label">Title:</label>
+                                            <input type="text" class="form-control" id="inputTitle" placeholder="Enter the book title" name="title" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="inputGenre" class="form-label">Genre:</label>
+                                            <select class="form-select" id="inputGenre" name="genre" required>
+                                                <option value="" selected disabled>Select Genre</option>
+                                                <option th:each="genre : ${genres}" th:value="${genre}" th:text="${#strings.capitalize(genre.toString().toLowerCase())}"></option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="inputAvailable" class="form-label">Available:</label>
+                                            <select class="form-select" id="inputAvailable" name="available" required>
+                                                <option th:value="${true}">Yes</option>
+                                                <option th:value="${false}">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="inputAuthor" class="form-label">Author:</label>
+                                            <select class="form-select" id="inputAuthor" name="author" required>
+                                                <option value="" selected disabled>Select Author</option>
+                                                <option th:each="author : ${authors}" th:value="${author.fullName}" th:text="${author.fullName}"></option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="inputPublicationYear" class="form-label">Publication Year:</label>
+                                            <input type="date" class="form-control" id="inputPublicationYear" name="publicationYear" required>
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="inputGenre" class="form-label">Genre:</label>
-                                        <select class="form-select" id="inputGenre" name="genre" required>
-                                            <option value="" selected disabled>Select Genre</option>
-                                            <option th:each="genre : ${genres}" th:value="${genre}" th:text="${#strings.capitalize(genre.toString().toLowerCase())}"></option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="inputAvailable" class="form-label">Available:</label>
-                                        <select class="form-select" id="inputAvailable" name="available" required>
-                                            <option th:value="${true}">Yes</option>
-                                            <option th:value="${false}">No</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="inputAuthor" class="form-label">Author:</label>
-                                        <select class="form-select" id="inputAuthor" name="author" required>
-                                            <option value="" selected disabled>Select Author</option>
-                                            <option th:each="author : ${authors}" th:value="${author.fullName}" th:text="${author.fullName}"></option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="inputPublicationYear" class="form-label">Publication Year:</label>
-                                        <input type="date" class="form-control" id="inputPublicationYear" name="publicationYear" required>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="inputDescription" class="form-label">Description:</label>
+                                            <textarea class="form-control" id="inputDescription" placeholder="Enter the book description" name="description" rows="5" required></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="formFileMultiple" class="form-label">Image:</label>
+                                            <input class="form-control" type="file" id="formFileMultiple" name="imageFileName" accept=".jpg, .jpeg, .png" multiple>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="inputDescription" class="form-label">Description:</label>
-                                        <textarea class="form-control" id="inputDescription" placeholder="Enter the book description" name="description" rows="5" required></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="formFileMultiple" class="form-label">Image:</label>
-                                        <input class="form-control" type="file" id="formFileMultiple" name="imageFileName" accept=".jpg, .jpeg, .png" multiple>
-                                    </div>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="submit" class="btn btn-primary btn-lg">Add Book</button>
                                 </div>
                             </div>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button type="submit" class="btn btn-primary btn-lg">Add Book</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
