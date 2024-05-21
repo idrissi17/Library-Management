@@ -2,19 +2,16 @@ package org.pj.library_management;
 
 
 import org.pj.library_management.dao.entities.*;
-import org.pj.library_management.dao.repository.CustomerRepository;
+import org.pj.library_management.dao.repository.PersonRepository;
 import org.pj.library_management.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.*;
-import java.util.stream.Stream;
 
 @SpringBootApplication
 public class LibraryManagementApplication implements CommandLineRunner{
@@ -34,7 +31,7 @@ public class LibraryManagementApplication implements CommandLineRunner{
 	@Autowired
 	private AdminManager adminManager;
 	@Autowired
-	private CustomerRepository customerRepository;
+	private PersonRepository personRepository;
 
 
 	public static void main(String[] args) {

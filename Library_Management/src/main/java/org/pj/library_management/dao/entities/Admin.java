@@ -14,7 +14,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin extends Customer{
+public class Admin extends Person {
     @NotEmpty
     @Size(max = 20)
     private  String fullName;

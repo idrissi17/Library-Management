@@ -7,7 +7,6 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -17,7 +16,7 @@ import java.util.List;
 @Table(name = "students")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student extends Customer {
+public class Student extends Person {
     @Size(max = 20)
     private String fullName;
     @Size(max = 20)

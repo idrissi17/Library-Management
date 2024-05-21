@@ -1,7 +1,7 @@
 package org.pj.library_management.service;
 
-import org.pj.library_management.dao.entities.Customer;
-import org.pj.library_management.dao.repository.CustomerRepository;
+import org.pj.library_management.dao.entities.Person;
+import org.pj.library_management.dao.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,21 +18,21 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private PersonRepository personRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Customer customer =customerRepository.findByUsername(username);
-        if (customer == null) {
+        Person person = personRepository.findByUsername(username);
+        if (person == null) {
             throw new UsernameNotFoundException("User not found");
         }
-        Set<String> roles = customer.getRoles();
+        Set<String> roles = person.getRoles();
         List<GrantedAuthority> authorities = new ArrayList<>();
         for (String role : roles) {
             authorities.add(new SimpleGrantedAuthority(role));
         }
 
-        return new User(customer.getUsername(),customer.getPassword(), Collections.singleton(authorities.get(0)));
+        return new User(person.getUsername(), person.getPassword(), Collections.singleton(authorities.get(0)));
     }
     }
 
